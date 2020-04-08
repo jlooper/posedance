@@ -14,7 +14,7 @@
 					width: auto;
 					height: auto;
 					position: absolute;
-          display:none;
+          display:none
 				"
         controls
       >
@@ -85,14 +85,14 @@ export default {
       let poses = [];
 
       const pose = await this.net.estimatePoses(this.video, {
-        flipHorizontal: true,
+        //flipHorizontal: true,
         decodingMethod: "single-person"
       });
       poses = poses.concat(pose);
       this.ctx.clearRect(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.save();
-      this.ctx.scale(-1, 1);
-      this.ctx.translate(-VIDEO_WIDTH, 0);
+      //this.ctx.scale(-1, 1);
+      //this.ctx.translate(-VIDEO_WIDTH, 0);
       this.ctx.drawImage(this.video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.restore();
 
@@ -159,6 +159,6 @@ export default {
 }
 button {
   position: absolute;
-  top: 55%;
+  top: 75%;
 }
 </style>

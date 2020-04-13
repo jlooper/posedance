@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Dance />
+    <SelectVideo />
   </div>
 </template>
 
 <script>
-import Dance from "./components/Dance.vue";
+import SelectVideo from "./components/SelectVideo.vue";
 
 export default {
   name: "App",
   components: {
-    Dance
+    SelectVideo
   }
 };
 </script>

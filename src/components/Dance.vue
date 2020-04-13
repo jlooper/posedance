@@ -1,32 +1,45 @@
 <template>
   <div>
-    <div class="dance">
-      <canvas ref="output" width="400" height="600" class="canvas" />
-
-      <video
-        class="video"
-        ref="video"
-        playsinline
-        style="
-					-webkit-transform: scaleX(-1);
-					transform: scaleX(-1);
-					visibility: hidden;
-					width: auto;
-					height: auto;
-					position: absolute;
-          display:none
-				"
-        controls
-      >
-        <source src="../assets/video.mp4" type="video/mp4" />
-      </video>
+    <div class="columns">
+      <div class="column is-full has-background-success">
+        <h1 class="has-text-centered is-size-1">TikTok Trainer</h1>
+        <progress v-show="!ready" class="progress is-large is-info" max="100">60%</progress>
+      </div>
     </div>
 
-    <div>
-      <button @click="play">play!</button>
+    <div class="columns">
+      <div class="column is-half has-background-info">
+        <div class="dance">
+          <canvas ref="output" width="400" height="600" class="canvas" />
+
+          <video
+            class="video"
+            ref="video"
+            playsinline
+            style="
+              -webkit-transform: scaleX(-1);
+              transform: scaleX(-1);
+              visibility: hidden;
+              width: auto;
+              height: auto;
+              display:none;
+              "
+            controls
+          >
+            <source src="../assets/4.mp4" type="video/mp4" onplay="loadVideo()" />
+          </video>
+        </div>
+      </div>
+      <div class="column is-half">Second column</div>
+    </div>
+    <div class="columns">
+      <div class="column is-full has-text-centered">
+        <button :enabled="!ready" class="button is-large is-success" @click="play">play!</button>
+      </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import * as posenet from "@tensorflow-models/posenet";
@@ -34,18 +47,29 @@ const VIDEO_WIDTH = 400;
 const VIDEO_HEIGHT = 600;
 export default {
   name: "Dance",
-
+  computed: {
+    ready() {
+      if (!this.videoLoaded && !this.modelLoaded) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  },
   data: function() {
     return {
       video: null,
       ctx: null,
       minConfidence: 0.2,
-      net: null
+      net: null,
+      modelLoaded: false,
+      videoLoaded: false
     };
   },
 
   async mounted() {
     //step 1, start up the model and load video
+    this.video = this.$refs.video;
 
     this.net = await posenet.load({
       architecture: "ResNet50",
@@ -54,9 +78,11 @@ export default {
       quantBytes: 2
     });
 
-    this.video = this.$refs.video;
+    if (this.net != null) {
+      this.modelLoaded = true;
+    }
 
-    await this.loadVideo();
+    await this.detectPoseRealTime();
   },
 
   methods: {
@@ -64,8 +90,8 @@ export default {
       this.video.play();
     },
 
-    async loadVideo() {
-      await this.detectPoseRealTime();
+    loadVideo() {
+      this.videoLoaded = true;
     },
 
     async detectPoseRealTime() {
@@ -85,14 +111,11 @@ export default {
       let poses = [];
 
       const pose = await this.net.estimatePoses(this.video, {
-        //flipHorizontal: true,
         decodingMethod: "single-person"
       });
       poses = poses.concat(pose);
       this.ctx.clearRect(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.save();
-      //this.ctx.scale(-1, 1);
-      //this.ctx.translate(-VIDEO_WIDTH, 0);
       this.ctx.drawImage(this.video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.restore();
 
@@ -151,14 +174,8 @@ export default {
 <style scoped>
 .canvas,
 .video {
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: 10;
   border: 1px solid black;
-}
-button {
-  position: absolute;
-  top: 75%;
+  margin: 50px;
 }
 </style>

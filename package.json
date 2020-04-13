@@ -1,43 +1,50 @@
 {
-  "name": "posedance",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "@tensorflow-models/posenet": "^2.2.1",
-    "@tensorflow/tfjs": "^1.7.0",
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.1.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+	"name": "posedance",
+	"version": "0.1.0",
+	"private": true,
+	"main": "./src/assets/sass/styles.scss",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "npm run css-build && vue-cli-service build",
+		"lint": "vue-cli-service lint",
+		"css-build": "node-sass --omit-source-map-url ./src/assets/sass/styles.scss ./public/css/styles.css",
+		"css-watch": "npm run css-build -- --watch",
+		"start": "npm run css-watch"
+	},
+	"dependencies": {
+		"@tensorflow-models/posenet": "^2.2.1",
+		"@tensorflow/tfjs": "^1.7.0",
+		"bulma": "^0.8.2",
+		"core-js": "^3.6.4",
+		"vue": "^2.6.11",
+		"vue-router": "^3.1.6"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.2.0",
+		"@vue/cli-plugin-eslint": "~4.2.0",
+		"@vue/cli-service": "~4.2.0",
+		"babel-eslint": "^10.0.3",
+		"eslint": "^6.7.2",
+		"eslint-plugin-vue": "^6.1.2",
+		"node-sass": "^4.13.1",
+		"vue-template-compiler": "^2.6.11"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/essential",
+			"eslint:recommended"
+		],
+		"parserOptions": {
+			"parser": "babel-eslint"
+		},
+		"rules": {}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	]
 }

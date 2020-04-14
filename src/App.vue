@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <SelectVideo />
+    <router-view />
   </div>
 </template>
 
 <script>
-import SelectVideo from "./components/SelectVideo.vue";
-
 export default {
-  name: "App",
-  components: {
-    SelectVideo
-  }
+  name: "App"
 };
 </script>
-
+<style>
+html {
+  background: url("./assets/background.jpg");
+  background-repeat: repeat;
+}
+</style>

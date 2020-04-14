@@ -16,8 +16,8 @@ const router = new Router({
 			component: SelectVideo
 		},
 		{
-			path: '/dance',
-			name: 'dance',
+			path: '/dance/:id',
+			name: 'Dance',
 			component: Dance
 		}
 	]

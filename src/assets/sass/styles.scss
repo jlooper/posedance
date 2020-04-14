@@ -1,10 +1,19 @@
 @charset "utf-8";
 
 // Set your brand colors
-$primary: #27abf2;
-$base: #fcfae1;
-$info: #f6e497;
-$warning: #b9121b;
-$link: #ffffff;
+$primary: #f9e54e;
+$base: #fbfef9;
+$info: #3ca8d6;
+$warning: #ff8646;
+$link: #ad8dcd;
+$dark: #191923;
 $family-primary: Geometry Soft Pro Bold N, sans-serif;
 @import '../../../node_modules/bulma/bulma.sass';
+
+.shadow {
+	border: 5px #191923 solid;
+	border-radius: 2px;
+	margin: 10px;
+	padding: 10px;
+	box-shadow: -8px 8px 0px #ad8dcd;
+}

@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="columns">
-      <div class="column is-full has-background-success">
-        <h1 class="has-text-centered is-size-1">TikTok Trainer</h1>
+      <div class="column is-full has-background-info">
+        <h1 class="has-text-centered is-size-1 has-text-white">PoseDance: A TikTok Trainer</h1>
         <progress v-show="!ready" class="progress is-large is-info" max="100">60%</progress>
       </div>
     </div>
 
     <div class="columns">
-      <div class="column is-half has-background-info">
+      <div class="column is-half has-background-primary">
         <div class="dance">
           <canvas ref="output" width="400" height="600" class="canvas" />
 
@@ -26,11 +26,12 @@
               "
             controls
           >
-            <source src="../assets/4.mp4" type="video/mp4" onplay="loadVideo()" />
+            <source :src="'/videos/' + id + '.mp4'" type="video/mp4" />
           </video>
+          <img :src="'/images/'+ id +'.png'" style="display:none;" ref="placeholder" />
         </div>
       </div>
-      <div class="column is-half">Second column</div>
+      <div class="column is-half has-background-warning">Me!</div>
     </div>
     <div class="columns">
       <div class="column is-full has-text-centered">
@@ -39,7 +40,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 import * as posenet from "@tensorflow-models/posenet";
@@ -63,13 +63,37 @@ export default {
       minConfidence: 0.2,
       net: null,
       modelLoaded: false,
-      videoLoaded: false
+      videoLoaded: false,
+      id: null,
+      videoPlaying: false
     };
   },
-
+  created() {
+    this.id = this.$route.params.id;
+  },
   async mounted() {
     //step 1, start up the model and load video
     this.video = this.$refs.video;
+    //video properties
+    this.video.onended = event => {
+      console.log(event);
+      this.videoPlaying = false;
+      cancelAnimationFrame(this.poseDetectionFrame);
+    };
+
+    this.video.onplaying = event => {
+      console.log(event);
+      this.videoPlaying = true;
+      this.detectPoseRealTime();
+    };
+
+    //set up canvases
+    this.canvas = this.$refs.output;
+    this.ctx = this.canvas.getContext("2d");
+    let placeholder = this.$refs.placeholder;
+    placeholder.width = 400;
+    placeholder.height = 600;
+    this.ctx.drawImage(placeholder, 0, 0);
 
     this.net = await posenet.load({
       architecture: "ResNet50",
@@ -81,8 +105,6 @@ export default {
     if (this.net != null) {
       this.modelLoaded = true;
     }
-
-    await this.detectPoseRealTime();
   },
 
   methods: {
@@ -96,18 +118,17 @@ export default {
 
     async detectPoseRealTime() {
       //step 4, start showing landmarks
-      this.canvas = this.$refs.output;
-
       this.canvas.width = VIDEO_WIDTH;
       this.canvas.height = VIDEO_HEIGHT;
 
-      this.ctx = this.canvas.getContext("2d");
       this.video.width = VIDEO_WIDTH;
       this.video.height = VIDEO_HEIGHT;
-      this.poseDetectionFrame();
+
+      await this.poseDetectionFrame(this.poseDetectionFrame);
     },
 
     async poseDetectionFrame() {
+      console.log("detecting");
       let poses = [];
 
       const pose = await this.net.estimatePoses(this.video, {
@@ -125,7 +146,9 @@ export default {
           this.drawSkeleton(keypoints);
         }
       });
-      requestAnimationFrame(this.poseDetectionFrame);
+      if (this.videoPlaying) {
+        requestAnimationFrame(this.poseDetectionFrame);
+      }
     },
 
     drawPoint(y, x, r) {

@@ -31,7 +31,21 @@
           <img :src="'/images/'+ id +'.png'" style="display:none;" ref="placeholder" />
         </div>
       </div>
-      <div class="column is-half has-background-warning">Me!</div>
+      <div class="column is-half has-background-warning">
+        <video
+          ref="video2"
+          playsinline
+          style="
+				-webkit-transform: scaleX(-1);
+				transform: scaleX(-1);
+				visibility: hidden;
+				width: auto;
+				height: auto;
+				position: absolute;
+			"
+        ></video>
+        <canvas ref="output2" width="400" height="600" class="canvas" />
+      </div>
     </div>
     <div class="columns">
       <div class="column is-full has-text-centered">
@@ -59,13 +73,18 @@ export default {
   data: function() {
     return {
       video: null,
+      video2: null,
+      canvas: null,
+      canvas2: null,
       ctx: null,
+      ctx2: null,
       minConfidence: 0.2,
       net: null,
       modelLoaded: false,
       videoLoaded: false,
       id: null,
-      videoPlaying: false
+      videoPlaying: false,
+      webcam: null
     };
   },
   created() {
@@ -74,6 +93,7 @@ export default {
   async mounted() {
     //step 1, start up the model and load video
     this.video = this.$refs.video;
+
     //video properties
     this.video.onended = event => {
       console.log(event);
@@ -89,7 +109,11 @@ export default {
 
     //set up canvases
     this.canvas = this.$refs.output;
+    this.canvas2 = this.$refs.output2;
+
     this.ctx = this.canvas.getContext("2d");
+    this.ctx2 = this.canvas2.getContext("2d");
+
     let placeholder = this.$refs.placeholder;
     placeholder.width = 400;
     placeholder.height = 600;
@@ -105,11 +129,48 @@ export default {
     if (this.net != null) {
       this.modelLoaded = true;
     }
+
+    //handle webcam
+    try {
+      this.webcam = await this.loadWebCam();
+    } catch (e) {
+      this.message = e.message;
+      throw e;
+    }
   },
 
   methods: {
+    async loadWebCam() {
+      const video2 = await this.setupCamera();
+      video2.play();
+      return video2;
+    },
+    async setupCamera() {
+      //step 3, set up the camera
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error(
+          "Browser API navigator.mediaDevices.getUserMedia not available"
+        );
+      }
+      this.video2 = this.$refs.video2;
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          facingMode: "user",
+          width: VIDEO_WIDTH,
+          height: VIDEO_HEIGHT
+        }
+      });
+      this.video2.srcObject = stream;
+      return new Promise(resolve => {
+        this.video2.onloadedmetadata = () => {
+          resolve(this.video2);
+        };
+      });
+    },
     play() {
       this.video.play();
+      this.video2.play();
     },
 
     loadVideo() {
@@ -135,10 +196,17 @@ export default {
         decodingMethod: "single-person"
       });
       poses = poses.concat(pose);
+      //left video
       this.ctx.clearRect(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.save();
       this.ctx.drawImage(this.video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
       this.ctx.restore();
+
+      //webcam
+      this.ctx2.clearRect(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
+      this.ctx2.save();
+      this.ctx2.drawImage(this.video2, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
+      this.ctx2.restore();
 
       poses.forEach(({ score, keypoints }) => {
         if (score >= this.minConfidence) {

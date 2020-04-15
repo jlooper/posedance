@@ -12,7 +12,7 @@
     </div>
 
     <div
-      class="menu columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd"
+      class="menu columns is-multiline is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd"
     >
       <div
         class="column has-background-white shadow is-one-quarter has-text-centered"
@@ -33,7 +33,7 @@
 export default {
   data: function() {
     return {
-      numVideos: 4
+      numVideos: 9
     };
   }
 };

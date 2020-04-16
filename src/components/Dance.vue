@@ -87,7 +87,9 @@ export default {
       videoPlaying: false,
       webcam: null,
       message: "Ready?! Press play!",
-      net2: null
+      net2: null,
+      webcamKeypoints: [],
+      videoKeypoints: []
     };
   },
   created() {
@@ -101,7 +103,10 @@ export default {
     this.video.onended = event => {
       console.log(event);
       this.videoPlaying = false;
+
       cancelAnimationFrame(this.poseDetectionFrame);
+
+      this.calculateScore();
     };
 
     this.video.onplaying = event => {
@@ -127,6 +132,29 @@ export default {
   },
 
   methods: {
+    calculateScore() {
+      console.log("calculating score");
+      let webCamx = [];
+      let videox = [];
+      let webCamy = [];
+      let videoy = [];
+
+      for (let i = 0; i < this.webcamKeypoints.length; i++) {
+        webCamx.push(this.webcamKeypoints[i].position.x);
+        webCamy.push(this.webcamKeypoints[i].position.y);
+      }
+      for (let i = 0; i < this.videoKeypoints.length; i++) {
+        videox.push(this.videoKeypoints[i].position.x);
+        videoy.push(this.videoKeypoints[i].position.y);
+      }
+      console.log(webCamx, webCamy, videox, videoy);
+
+      let result = videox.map(function(a, i) {
+        return a === webCamx[i] ? a : a - webCamx[i];
+      });
+
+      console.log(result);
+    },
     setUpCanvases() {
       //set up canvases
       this.canvas = this.$refs.output;
@@ -294,6 +322,7 @@ export default {
       for (let i = 0; i < keypoints.length; i++) {
         const keypoint = keypoints[i];
         const { y, x } = keypoint.position;
+        this.videoKeypoints.push(keypoint);
         this.drawPoint(y, x, 3);
       }
     },
@@ -301,6 +330,7 @@ export default {
       for (let i = 0; i < keypoints.length; i++) {
         const keypoint = keypoints[i];
         const { y, x } = keypoint.position;
+        this.webcamKeypoints.push(keypoint);
         this.drawPoint2(y, x, 3);
       }
     },

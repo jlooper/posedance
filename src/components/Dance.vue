@@ -9,7 +9,7 @@
     </div>
 
     <div class="columns">
-      <div class="column is-half has-background-primary">
+      <div class="column is-half has-background-primary has-text-centered">
         <div class="dance">
           <canvas ref="output" width="400" height="600" class="canvas" />
 
@@ -32,7 +32,7 @@
           <img :src="'/images/'+ id +'.png'" style="display:none;" ref="placeholder" />
         </div>
       </div>
-      <div class="column is-half has-background-warning">
+      <div class="column is-half has-background-warning has-text-centered">
         <video
           ref="video2"
           playsinline

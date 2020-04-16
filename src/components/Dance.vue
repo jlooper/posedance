@@ -46,6 +46,7 @@
 			"
         ></video>
         <canvas ref="output2" width="400" height="600" class="canvas" />
+        <p v-if="score!=null" class="is-size-3 has-text-centered">Your Score: {{score}}</p>
       </div>
     </div>
     <div class="columns">
@@ -89,7 +90,8 @@ export default {
       message: "Ready?! Press play!",
       net2: null,
       webcamKeypoints: [],
-      videoKeypoints: []
+      videoKeypoints: [],
+      score: null
     };
   },
   created() {
@@ -133,6 +135,7 @@ export default {
 
   methods: {
     calculateScore() {
+      this.score = 0;
       console.log("calculating score");
       let webCamx = [];
       let videox = [];
@@ -147,13 +150,30 @@ export default {
         videox.push(this.videoKeypoints[i].position.x);
         videoy.push(this.videoKeypoints[i].position.y);
       }
-      console.log(webCamx, webCamy, videox, videoy);
 
-      let result = videox.map(function(a, i) {
+      let xs = videox.map(function(a, i) {
         return a === webCamx[i] ? a : a - webCamx[i];
       });
 
-      console.log(result);
+      let ys = videoy.map(function(a, i) {
+        return a === webCamy[i] ? a : a - webCamy[i];
+      });
+
+      console.log(xs, ys);
+
+      let tally = 0;
+      for (let i = 0; i < xs; i++) {
+        tally += xs[i];
+        //console.log(tally);
+      }
+
+      let tally2 = 0;
+      for (let i = 0; i < ys; i++) {
+        tally2 += ys[i];
+        //console.log(tally2);
+      }
+      this.score = tally + tally2;
+      console.log(this.score);
     },
     setUpCanvases() {
       //set up canvases

@@ -37,13 +37,13 @@
           ref="video2"
           playsinline
           style="
-				-webkit-transform: scaleX(-1);
-				transform: scaleX(-1);
-				visibility: hidden;
-				width: auto;
-				height: auto;
-				position: absolute;
-			"
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);             
+            visibility: hidden;
+            width: auto;
+            height: auto;
+            position: absolute;
+          "
         ></video>
         <canvas ref="output2" width="400" height="600" class="canvas" />
         <p v-if="score!=null" class="is-size-3 has-text-centered">Your Score: {{score}}</p>
@@ -91,7 +91,9 @@ export default {
       net2: null,
       webcamKeypoints: [],
       videoKeypoints: [],
-      score: null
+      score: null,
+      tally: 0,
+      tally2: 0
     };
   },
   created() {
@@ -160,20 +162,19 @@ export default {
       });
 
       console.log(xs, ys);
-
-      let tally = 0;
-      for (let i = 0; i < xs; i++) {
-        tally += xs[i];
-        //console.log(tally);
+      var sum = 0;
+      var sum2 = 0;
+      for (var i in xs) {
+        sum += xs[i];
       }
-
-      let tally2 = 0;
-      for (let i = 0; i < ys; i++) {
-        tally2 += ys[i];
-        //console.log(tally2);
+      for (var j in ys) {
+        sum2 += ys[j];
       }
-      this.score = tally + tally2;
-      console.log(this.score);
+      console.log(sum, sum2);
+      console.log(sum / xs.length, sum2 / ys.length);
+      let s = sum / xs.length + sum2 / ys.length;
+      console.log(s);
+      this.score = s.toFixed(2);
     },
     setUpCanvases() {
       //set up canvases

@@ -3,6 +3,9 @@ import Router from 'vue-router';
 
 import Dance from '@/views/Dance.vue';
 import SelectVideo from '@/views/SelectVideo.vue';
+import Login from '@/views/Login.vue';
+import Register from '@/views/Register.vue';
+import store from './store.js';
 
 Vue.use(Router);
 
@@ -20,7 +23,29 @@ const router = new Router({
 			name: 'Dance',
 			component: Dance,
 		},
+
+		{
+			path: '/login',
+			name: 'login',
+			component: Login,
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: Register,
+		},
 	],
 });
 
+router.beforeEach((to, from, next) => {
+	if (to.matched.some((record) => record.meta.requiresAuth)) {
+		if (store.getters.isLoggedIn) {
+			next();
+			return;
+		}
+		next('/login');
+	} else {
+		next();
+	}
+});
 export default router;

@@ -31,8 +31,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 1 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 1 } }"
+          >Dance!</router-link>
         </div>
       </div>
 
@@ -76,8 +79,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 2 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 2 } }"
+          >Dance!</router-link>
         </div>
       </div>
     </div>
@@ -106,8 +112,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 3 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 3 } }"
+          >Dance!</router-link>
         </div>
       </div>
 
@@ -149,8 +158,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 4 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 4 } }"
+          >Dance!</router-link>
         </div>
       </div>
     </div>
@@ -179,8 +191,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 5 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 5 } }"
+          >Dance!</router-link>
         </div>
       </div>
 
@@ -206,8 +221,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 6 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 6 } }"
+          >Dance!</router-link>
         </div>
       </div>
     </div>
@@ -262,8 +280,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 7 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 7 } }"
+          >Dance!</router-link>
         </div>
       </div>
 
@@ -307,8 +328,11 @@
             </section>
           </blockquote>
         </div>
-        <div class="has-text-centered button is-link">
-          <router-link class="has-text-white" :to="{ name: 'Dance', params: { id: 8 } }">Dance!</router-link>
+        <div class="has-text-centered button is-link is-large">
+          <router-link
+            class="has-text-white is-size-2"
+            :to="{ name: 'Dance', params: { id: 8 } }"
+          >Dance!</router-link>
         </div>
       </div>
     </div>

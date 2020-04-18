@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="columns">
-      <div class="column is-full has-background-info">
-        <h1 class="has-text-centered is-size-1 has-text-white">PoseDance: A TikTok Trainer</h1>
+      <div class="column is-full turquoise">
         <progress v-show="!ready" class="progress is-large is-link" max="100">60%</progress>
         <p v-show="ready" class="has-text-centered is-size-3 has-text-white">{{message}}</p>
       </div>
@@ -395,5 +394,8 @@ export default {
   border-radius: 2px;
   margin: 50px;
   box-shadow: -8px 8px 0px #ad8dcd;
+}
+.turquoise {
+  background-color: #7dbfcb;
 }
 </style>

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Dance from '@/components/Dance.vue';
-import SelectVideo from '@/components/SelectVideo.vue';
+import Dance from '@/views/Dance.vue';
+import SelectVideo from '@/views/SelectVideo.vue';
 
 Vue.use(Router);
 
@@ -13,14 +13,14 @@ const router = new Router({
 		{
 			path: '/',
 			name: 'home',
-			component: SelectVideo
+			component: SelectVideo,
 		},
 		{
 			path: '/dance/:id',
 			name: 'Dance',
-			component: Dance
-		}
-	]
+			component: Dance,
+		},
+	],
 });
 
 export default router;

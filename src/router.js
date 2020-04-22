@@ -5,6 +5,8 @@ import Dance from '@/views/Dance.vue';
 import SelectVideo from '@/views/SelectVideo.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
+import Leaderboard from '@/views/Leaderboard.vue';
+
 import store from './store.js';
 
 Vue.use(Router);
@@ -33,6 +35,11 @@ const router = new Router({
 			path: '/register',
 			name: 'register',
 			component: Register,
+		},
+		{
+			path: '/leaderboard',
+			name: 'leaderboard',
+			component: Leaderboard,
 		},
 	],
 });

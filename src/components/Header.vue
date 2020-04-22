@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar is-info is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <router-link class="navbar-item" :to="'../'">
+        <router-link class="navbar-item" to="/">
           <h1 class="navbar-item is-size-1 has-text-white">PoseDance: A TikTok Trainer</h1>
         </router-link>
         <a
@@ -22,11 +22,13 @@
       <div id="menu" class="navbar-menu has-background-info">
         <div class="navbar-end">
           <div class="navbar-item">
+            <router-link class="navbar-item has-text-white" :to="'/leaderboard'">Leaderboard</router-link>
+
             <span v-if="userId != null">
               <a href="/" class="navbar-item" @click="logout">Logout</a>
             </span>
             <span v-if="userId == null">
-              <router-link class="navbar-item has-text-white" :to="'../login'">Login</router-link>
+              <router-link class="navbar-item has-text-white" :to="'/login'">Login</router-link>
             </span>
           </div>
         </div>

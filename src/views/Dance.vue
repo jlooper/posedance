@@ -58,6 +58,8 @@
 
 <script>
 import * as posenet from "@tensorflow-models/posenet";
+import { mapState } from "vuex";
+
 const VIDEO_WIDTH = 400;
 const VIDEO_HEIGHT = 600;
 export default {
@@ -69,7 +71,8 @@ export default {
       } else {
         return true;
       }
-    }
+    },
+    ...mapState(["sessionId"])
   },
   data: function() {
     return {
@@ -178,6 +181,26 @@ export default {
       let s = sum / xs.length + sum2 / ys.length;
       console.log(s);
       this.score = s.toFixed(2);
+      this.postScore(this.score);
+    },
+    postScore(score) {
+      let request = {
+        Statistics: [
+          {
+            StatisticName: "score",
+            Value: parseInt(score)
+          }
+        ],
+
+        headers: {
+          "X-authentication": this.sessionId
+        }
+      };
+      // eslint-disable-next-line no-undef
+      PlayFabClientSDK.UpdatePlayerStatistics(request, this.callback);
+    },
+    callback(e) {
+      console.log(e);
     },
     setUpCanvases() {
       //set up canvases

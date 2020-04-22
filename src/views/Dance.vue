@@ -164,10 +164,14 @@ export default {
       var sum = 0;
       var sum2 = 0;
       for (var i in xs) {
-        sum += xs[i];
+        if (!isNaN(i)) {
+          sum += xs[i];
+        }
       }
       for (var j in ys) {
-        sum2 += ys[j];
+        if (!isNaN(i)) {
+          sum2 += ys[j];
+        }
       }
       console.log(sum, sum2);
       console.log(sum / xs.length, sum2 / ys.length);

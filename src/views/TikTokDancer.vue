@@ -62,7 +62,7 @@ export default {
 
 			cancelAnimationFrame(this.poseDetectionFrame);
 
-			this.calculateScore();
+			//this.calculateScore();
 		};
 
 		this.video.onplaying = (event) => {

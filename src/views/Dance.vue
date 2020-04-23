@@ -10,7 +10,7 @@
 		<div class="columns">
 			<TikTokDancer ref="tiktok" @ready="onReady" />
 
-			<!--<WebCam />-->
+			<WebCam />
 		</div>
 		<div class="columns">
 			<div class="column is-full has-text-centered">
@@ -22,10 +22,10 @@
 
 <script>
 import TikTokDancer from '@/views/TikTokDancer';
-
+import WebCam from '@/views/WebCam';
 export default {
 	name: 'Dance',
-	components: { TikTokDancer },
+	components: { TikTokDancer, WebCam },
 
 	data: function() {
 		return {

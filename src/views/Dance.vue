@@ -1,69 +1,59 @@
 <template>
-  <div>
-    <div class="columns">
-      <div class="column is-full turquoise">
-        <progress v-show="!ready" class="progress is-large is-link" max="100">60%</progress>
-        <p v-show="ready" class="has-text-centered is-size-3 has-text-white">{{message}}</p>
-      </div>
-    </div>
+	<div>
+		<div class="columns">
+			<div class="column is-full turquoise">
+				<progress v-show="!ready" class="progress is-large is-link" max="100">60%</progress>
+				<p v-show="ready" class="has-text-centered is-size-3 has-text-white">{{ message }}</p>
+			</div>
+		</div>
 
-    <div class="columns">
-      <div class="column is-half has-background-primary has-text-centered">
-        <div class="dance">
-          <canvas ref="output" width="400" height="600" class="canvas" />
+		<div class="columns">
+			<TikTokDancer ref="tiktok" @ready="onReady" />
 
-          <video
-            class="video"
-            ref="video"
-            playsinline
-            style="
-              -webkit-transform: scaleX(-1);
-              transform: scaleX(-1);
-              visibility: hidden;
-              width: auto;
-              height: auto;
-              display:none;
-              "
-            controls
-          >
-            <source :src="'/videos/' + id + '.mp4'" type="video/mp4" />
-          </video>
-          <img :src="'/images/'+ id +'.png'" style="display:none;" ref="placeholder" />
-        </div>
-      </div>
-      <div class="column is-half has-background-warning has-text-centered">
-        <video
-          ref="video2"
-          playsinline
-          style="
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);             
-            visibility: hidden;
-            width: auto;
-            height: auto;
-            position: absolute;
-          "
-        ></video>
-        <canvas ref="output2" width="400" height="600" class="canvas" />
-        <p v-if="score!=null" class="is-size-3 has-text-centered">Your Score: {{score}}</p>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column is-full has-text-centered">
-        <button :enabled="!ready" class="button is-large is-success" @click="play">play!</button>
-      </div>
-    </div>
-  </div>
+			<!--<WebCam />-->
+		</div>
+		<div class="columns">
+			<div class="column is-full has-text-centered">
+				<button :enabled="!ready" class="button is-large is-success" @click="play">play!</button>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import * as posenet from "@tensorflow-models/posenet";
+import TikTokDancer from '@/views/TikTokDancer';
+
+export default {
+	name: 'Dance',
+	components: { TikTokDancer },
+
+	data: function() {
+		return {
+			message: 'Ready?! Press play!',
+			ready: false,
+		};
+	},
+	methods: {
+		play() {
+			this.$refs.tiktok.play();
+		},
+		onReady() {
+			this.ready = true;
+		},
+	},
+};
+</script>
+<!--
+import * as posenet from '@tensorflow-models/posenet';
+import TikTokDancer from '@/views/TikTokDancer';
+import WebCam from '@/views/WebCam';
 import { mapState } from "vuex";
 
 const VIDEO_WIDTH = 400;
 const VIDEO_HEIGHT = 600;
 export default {
   name: "Dance",
+  components: { TikTokDancer, WebCam },
   computed: {
     ready() {
       if (!this.videoLoaded && !this.modelLoaded) {
@@ -412,17 +402,17 @@ export default {
   }
 };
 </script>
-
+-->
 <style scoped>
 .canvas,
 .video {
-  z-index: 10;
-  border: 5px solid black;
-  border-radius: 2px;
-  margin: 50px;
-  box-shadow: -8px 8px 0px #ad8dcd;
+	z-index: 10;
+	border: 5px solid black;
+	border-radius: 2px;
+	margin: 50px;
+	box-shadow: -8px 8px 0px #ad8dcd;
 }
 .turquoise {
-  background-color: #7dbfcb;
+	background-color: #7dbfcb;
 }
 </style>

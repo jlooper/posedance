@@ -14,6 +14,7 @@
 	"dependencies": {
 		"@tensorflow-models/posenet": "^2.2.1",
 		"@tensorflow/tfjs": "^1.7.0",
+		"playfab-sdk": "^2.46.200422",
 		"bulma": "^0.8.2",
 		"core-js": "^3.6.4",
 		"vue": "^2.6.11",

@@ -8,6 +8,7 @@ export default new Vuex.Store({
 	state: {
 		userId: null,
 		sessionId: null,
+		ready: true,
 	},
 	plugins: [createPersistedState()],
 	mutations: {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
 		},
 		clearSessionId: (state) => {
 			state.sessionId = null;
+		},
+		showReady: (state, ready) => {
+			state.ready = ready;
 		},
 	},
 	getters: {
@@ -39,6 +43,9 @@ export default new Vuex.Store({
 		},
 		clearSessionId({ commit }) {
 			commit('clearSessionId');
+		},
+		showReady({ commit }, ready) {
+			commit('showReady', ready);
 		},
 	},
 });

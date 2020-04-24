@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div class="columns">
       <div class="column is-full turquoise">
         <progress v-show="!ready" class="progress is-large is-link" max="100">60%</progress>
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="columns">
-      <div class="column is-full has-text-centered">
+      <div class="column p-10 is-full has-text-centered">
         <button :enabled="!ready" class="button is-large is-success" @click="play">play!</button>
       </div>
     </div>
@@ -59,6 +59,8 @@
 <script>
 import * as posenet from "@tensorflow-models/posenet";
 import { mapState } from "vuex";
+import { PlayFabClient } from "playfab-sdk";
+
 const VIDEO_WIDTH = 400;
 const VIDEO_HEIGHT = 600;
 export default {
@@ -118,7 +120,7 @@ export default {
     //handle webcam video
     this.video2 = this.$refs.video2;
     this.setUpCanvases();
-    this.loadModel();
+    this.loadModels();
     //handle webcam
     try {
       this.webcam = await this.setupCamera();
@@ -170,25 +172,28 @@ export default {
       this.postScore(this.score);
     },
     postScore(score) {
-      let request = {
-        Statistics: [
-          {
-            StatisticName: "score",
-            Value: parseInt(score)
+      if (this.sessionId != null) {
+        let request = {
+          Statistics: [
+            {
+              StatisticName: "score",
+              Value: parseInt(score)
+            }
+          ],
+          headers: {
+            "X-authentication": this.sessionId
           }
-        ],
-        headers: {
-          "X-authentication": this.sessionId
-        }
-      };
-      // eslint-disable-next-line no-undef
-      PlayFabClientSDK.UpdatePlayerStatistics(request, this.callback);
+        };
+        PlayFabClient.settings.titleId = "266B3";
+        PlayFabClient.UpdatePlayerStatistics(request, this.callback);
+      } else {
+        this.message = "Please login to see your scores on the leaderboard!";
+      }
     },
-    callback(e) {
-      console.log(e);
+    callback(error, result) {
+      console.log(error, result);
     },
     setUpCanvases() {
-      //set up canvases
       this.canvas = this.$refs.output;
       this.canvas2 = this.$refs.output2;
       this.ctx = this.canvas.getContext("2d");
@@ -199,7 +204,7 @@ export default {
       placeholder.height = VIDEO_HEIGHT;
       this.ctx.drawImage(placeholder, 0, 0);
     },
-    async loadModel() {
+    async loadModels() {
       this.net = await posenet.load({
         architecture: "ResNet50",
         outputStride: 32,
@@ -388,5 +393,8 @@ export default {
 }
 .turquoise {
   background-color: #7dbfcb;
+}
+.page {
+  margin-bottom: 60px;
 }
 </style>

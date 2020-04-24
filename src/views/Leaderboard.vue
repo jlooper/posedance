@@ -1,10 +1,10 @@
 <template>
-  <div>hello</div>
+	<div>hello</div>
 </template>
 <script>
+//const { SecretClient } = require('@azure/keyvault-secrets');
+//const { DefaultAzureCredential } = require('@azure/identity');
 export default {
-  created() {
-    //PlayFabClientSDK.GetLeaderboard(loginRequest, this.LoginCallback);
-  }
+	async created() {},
 };
 </script>

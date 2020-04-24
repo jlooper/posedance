@@ -1,4 +1,4 @@
-# posedance
+# PoseDance - Your TikTok Trainer!
 
 ## Project setup
 ```

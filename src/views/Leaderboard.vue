@@ -1,10 +1,26 @@
 <template>
-	<div>hello</div>
+  <div>{{key}}</div>
 </template>
 <script>
-//const { SecretClient } = require('@azure/keyvault-secrets');
-//const { DefaultAzureCredential } = require('@azure/identity');
+import axios from "axios";
+
 export default {
-	async created() {},
+  data() {
+    return {
+      key: ""
+    };
+  },
+
+  methods: {},
+  async created() {
+    try {
+      const response = await axios.get(
+        "https://posedance-function.azurewebsites.net/api/getKey"
+      );
+      this.key = response.data.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 };
 </script>

@@ -12,10 +12,9 @@
 		"start": "npm run css-watch"
 	},
 	"dependencies": {
-		"@azure/identity": "^1.0.2",
-		"@azure/keyvault-secrets": "4.0.2",
 		"@tensorflow-models/posenet": "^2.2.1",
 		"@tensorflow/tfjs": "^1.7.0",
+		"axios": "^0.19.2",
 		"bulma": "^0.8.2",
 		"core-js": "^3.6.4",
 		"playfab-sdk": "^2.46.200422",

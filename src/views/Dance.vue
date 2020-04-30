@@ -164,10 +164,7 @@ export default {
 					sum2 += ys[j];
 				}
 			}
-			console.log(sum, sum2);
-			console.log(sum / xs.length, sum2 / ys.length);
 			let s = sum / xs.length + sum2 / ys.length;
-			console.log(s);
 			this.score = s.toFixed(2);
 			this.postScore(this.score);
 		},

@@ -1,26 +1,52 @@
 <template>
-  <div>{{key}}</div>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered has-background-white shadow">
+        <h2 class="title has-text-black">Leaderboard</h2>
+        <p
+          class="is-size-3"
+          v-for="leader in leaderboard"
+          :key="leader.Position"
+        >{{leader.Profile.LinkedAccounts[0].Username || 'anonymous'}} : {{leader.StatValue}}</p>
+      </div>
+    </div>
+  </section>
 </template>
 <script>
-import axios from "axios";
+import { PlayFab, PlayFabServer } from "playfab-sdk";
 
 export default {
   data() {
     return {
-      key: ""
+      leaderboard: []
     };
   },
 
-  methods: {},
-  async created() {
-    try {
-      const response = await axios.get(
-        "https://posedance-function.azurewebsites.net/api/getKey"
-      );
-      this.key = response.data.data;
-    } catch (error) {
-      console.error(error);
+  methods: {
+    LeaderboardCallback(error, result) {
+      if (result !== null) {
+        this.leaderboard = result.data.Leaderboard;
+        console.log(this.leaderboard);
+      } else if (error !== null) {
+        console.log(error.errorMessage);
+      }
     }
+  },
+  created() {
+    var leaderboardRequest = {
+      ProfileConstraints: {
+        ShowDisplayName: true,
+        ShowLinkedAccounts: true,
+        ShowContactEmailAddresses: true
+      },
+      MaxResultsCount: 100,
+      StartPosition: 0,
+      StatisticName: "score"
+    };
+    PlayFabServer.settings.titleId = "266B3";
+    PlayFab.settings.developerSecretKey =
+      process.env.VUE_APP_PLAYFAB_SECRET_KEY;
+    PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
   }
 };
 </script>

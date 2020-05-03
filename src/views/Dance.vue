@@ -3,7 +3,8 @@
     <div class="columns">
       <div class="column is-full turquoise">
         <progress v-show="!ready" class="progress is-large is-link" max="100">60%</progress>
-        <p v-show="ready" class="has-text-centered is-size-3 has-text-white">{{ message }}</p>
+        <p v-show="ready" class="has-text-centered is-size-4">{{ message }}</p>
+        <p v-show="ready" v-if="!sessionId" class="has-text-centered is-size-4">{{ message2 }}</p>
       </div>
     </div>
 
@@ -36,8 +37,6 @@
           ref="video2"
           playsinline
           style="
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);             
             visibility: hidden;
             width: auto;
             height: auto;
@@ -94,6 +93,7 @@ export default {
       videoPlaying: false,
       webcam: null,
       message: "Ready?! Press preview for poses, and play for webcam!",
+      message2: "Login to save scores!",
       net2: null,
       webcamKeypoints: [],
       videoKeypoints: [],
@@ -172,7 +172,11 @@ export default {
       }
       let s = sum / xs.length + sum2 / ys.length;
       this.score = s.toFixed(2);
-      this.postScore(this.score);
+      if (!isNaN(this.score)) {
+        this.postScore(this.score);
+      } else {
+        this.score = "Sorry, we couldn't calculate a score";
+      }
     },
     postScore(score) {
       if (this.sessionId != null) {
@@ -327,7 +331,7 @@ export default {
     drawPoint2(y, x, r) {
       this.ctx2.beginPath();
       this.ctx2.arc(x, y, r, 0, 2 * Math.PI);
-      this.ctx2.fillStyle = "blue";
+      this.ctx2.fillStyle = "#FFFFFF";
       this.ctx2.fill();
     },
     toTuple({ y, x }) {
@@ -388,7 +392,7 @@ export default {
         this.drawSegment2(
           this.toTuple(keypoints2[0].position),
           this.toTuple(keypoints2[1].position),
-          "blue",
+          "#FFFFFF",
           1
         );
       });
@@ -408,6 +412,7 @@ export default {
 }
 .turquoise {
   background-color: #7dbfcb;
+  margin-top: 10px;
 }
 .page {
   margin-bottom: 60px;

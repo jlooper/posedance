@@ -2,7 +2,6 @@
 	"name": "posedance",
 	"version": "0.1.0",
 	"private": true,
-	"main": "./src/assets/sass/styles.scss",
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "npm run css-build && vue-cli-service build",
@@ -18,6 +17,8 @@
 		"bulma": "^0.8.2",
 		"core-js": "^3.6.4",
 		"playfab-sdk": "^2.46.200422",
+		"sass": "^1.26.5",
+		"sass-loader": "^8.0.2",
 		"vue": "^2.6.11",
 		"vue-router": "^3.1.6",
 		"vuelidate": "^0.7.4",

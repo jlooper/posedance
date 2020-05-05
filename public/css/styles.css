@@ -1,3 +1,10 @@
+.shadow {
+  border: 5px #191923 solid;
+  border-radius: 2px;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: -8px 8px 0px #ad8dcd; }
+
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -7112,10 +7119,3 @@ label.panel-block {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
-
-.shadow {
-  border: 5px #191923 solid;
-  border-radius: 2px;
-  margin: 5px;
-  padding: 5px;
-  box-shadow: -8px 8px 0px #ad8dcd; }

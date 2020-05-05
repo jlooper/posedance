@@ -18,8 +18,7 @@ import { PlayFab, PlayFabServer } from "playfab-sdk";
 export default {
   data() {
     return {
-      leaderboard: [],
-      key: ""
+      leaderboard: []
     };
   },
 
@@ -35,8 +34,6 @@ export default {
   },
 
   created() {
-    this.key = process.env.VUE_APP_PLAYFAB_SECRET_KEY;
-
     var leaderboardRequest = {
       ProfileConstraints: {
         ShowDisplayName: true,
@@ -48,7 +45,8 @@ export default {
       StatisticName: "score"
     };
     PlayFabServer.settings.titleId = "266B3";
-    PlayFab.settings.developerSecretKey = this.key;
+    PlayFab.settings.developerSecretKey =
+      process.env.VUE_APP_PLAYFAB_SECRET_KEY;
     PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
   }
 };

@@ -1,5 +1,7 @@
 # PoseDance - Your TikTok Trainer!
 
+Use PoseNet to train your dancing!
+
 ## Project setup
 ```
 npm install

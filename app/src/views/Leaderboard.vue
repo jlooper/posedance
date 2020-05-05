@@ -35,9 +35,10 @@ export default {
     }
   },
 
-  created() {
-    let res = axios.get("/api/initTrigger");
-    this.key = res;
+  async created() {
+    let res = await axios.get("/api/initTrigger");
+    console.log(res);
+    this.key = res.data;
 
     var leaderboardRequest = {
       ProfileConstraints: {

@@ -27,11 +27,7 @@ jobs:
           app_location: "/app" # App source code path
           api_location: "/functions" # Api source code path - optional
           app_artifact_location: "dist" # Built app content directory - optional
-          app_build_command: 'echo "PlayFab secret: $playfab_secret" && npm run build'
           ###### End of Repository/Build Configurations ######
-        env:
-          play_secret: ${{ secrets.PLAYFAB_SECRET }}
-          build_sha: 1234
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

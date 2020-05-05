@@ -14,7 +14,7 @@
 </template>
 <script>
 import { PlayFab, PlayFabServer } from "playfab-sdk";
-import axios from axios;
+import axios from "axios";
 
 export default {
   data() {

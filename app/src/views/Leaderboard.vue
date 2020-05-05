@@ -14,11 +14,13 @@
 </template>
 <script>
 import { PlayFab, PlayFabServer } from "playfab-sdk";
+import axios from axios;
 
 export default {
   data() {
     return {
-      leaderboard: []
+      leaderboard: [],
+      key: ''
     };
   },
 
@@ -33,6 +35,10 @@ export default {
     }
   },
   created() {
+
+    let res = await axios.get("/functions/initTrigger");
+    this.key = res.data.playfab_key;
+
     var leaderboardRequest = {
       ProfileConstraints: {
         ShowDisplayName: true,
@@ -44,8 +50,7 @@ export default {
       StatisticName: "score"
     };
     PlayFabServer.settings.titleId = "266B3";
-    PlayFab.settings.developerSecretKey =
-      process.env["VUE_APP_PLAYFAB_SECRET_KEY"];
+    PlayFab.settings.developerSecretKey = this.key;
     PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
   }
 };

@@ -41,11 +41,6 @@ const router = new Router({
 			name: 'leaderboard',
 			component: Leaderboard,
 		},
-		{
-			path: '/*',
-			serve: '/index.html',
-			statusCode: 200,
-		},
 	],
 });
 

@@ -45,8 +45,7 @@ export default {
       StatisticName: "score"
     };
     PlayFabServer.settings.titleId = "266B3";
-    PlayFab.settings.developerSecretKey =
-      process.env.VUE_APP_PLAYFAB_SECRET_KEY;
+    PlayFab.settings.developerSecretKey = process.env.PLAY_SECRET;
     PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
   }
 };

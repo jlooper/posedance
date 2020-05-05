@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       leaderboard: [],
-      key: ''
+      key: ""
     };
   },
 
@@ -34,8 +34,8 @@ export default {
       }
     }
   },
-  created() {
 
+  async created() {
     let res = await axios.get("/functions/initTrigger");
     this.key = res.data.playfab_key;
 

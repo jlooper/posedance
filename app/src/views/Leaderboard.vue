@@ -45,7 +45,7 @@ export default {
     };
     PlayFabServer.settings.titleId = "266B3";
     PlayFab.settings.developerSecretKey =
-      process.env.VUE_APP_PLAYFAB_SECRET_KEY;
+      process.env["VUE_APP_PLAYFAB_SECRET_KEY"];
     PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
   }
 };

@@ -25,7 +25,7 @@ jobs:
         action: 'upload'
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
-        api_location: 'api' # Api source code path - optional
+        api_location: '' # Api source code path - optional
         app_artifact_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 

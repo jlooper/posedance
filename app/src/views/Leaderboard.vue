@@ -35,9 +35,8 @@ export default {
     }
   },
 
-  async created() {
-    let res = await axios.get("/functions/initTrigger");
-    this.key = res.data.playfab_key;
+  created() {
+    this.key = process.env.VUE_APP_PLAYFAB_SECRET_KEY;
 
     var leaderboardRequest = {
       ProfileConstraints: {

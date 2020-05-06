@@ -1,6 +1,6 @@
 {
-    "azureFunctions.deploySubpath": "functions",
-    "azureFunctions.projectLanguage": "JavaScript",
-    "azureFunctions.projectRuntime": "~2",
-    "debug.internalConsoleOptions": "neverOpen"
+	"azureFunctions.deploySubpath": "api",
+	"azureFunctions.projectLanguage": "JavaScript",
+	"azureFunctions.projectRuntime": "~2",
+	"debug.internalConsoleOptions": "neverOpen"
 }

@@ -7,7 +7,7 @@
 			"problemMatcher": "$func-watch",
 			"isBackground": true,
 			"options": {
-				"cwd": "${workspaceFolder}/functions"
+				"cwd": "${workspaceFolder}/api"
 			}
 		}
 	]

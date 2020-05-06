@@ -37,7 +37,6 @@ export default {
 
   async created() {
     let res = await axios.get("/api/initTrigger");
-    console.log(res);
     this.key = res.data;
 
     var leaderboardRequest = {

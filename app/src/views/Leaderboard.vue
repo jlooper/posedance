@@ -22,12 +22,12 @@ export default {
     };
   },
 
-  created() {
-    axios
+  async created() {
+    await axios
       .get("/api/playfab_leaderboard")
       .then(function(response) {
         // handle success
-        console.log(response);
+        console.log(response.data);
         this.leaderboard = response.data;
       })
       .catch(function(error) {

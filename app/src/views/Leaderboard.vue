@@ -27,8 +27,8 @@ export default {
       .get("/api/playfab_leaderboard")
       .then(function(response) {
         // handle success
-        console.log(response.data);
         this.leaderboard = response.data;
+        console.log(this.leaderboard);
       })
       .catch(function(error) {
         // handle error

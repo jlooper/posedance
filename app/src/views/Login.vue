@@ -44,7 +44,7 @@
   </section>
 </template>
 <script>
-import { PlayFabClient } from "playfab-sdk";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -54,23 +54,17 @@ export default {
     };
   },
   methods: {
-    submit() {
-      var loginRequest = {
-        //TitleId: '266B3',
-        Email: this.email,
-        Password: this.password
-      };
-      PlayFabClient.settings.titleId = "266B3";
-      PlayFabClient.LoginWithEmailAddress(loginRequest, this.LoginCallback);
-    },
-
-    LoginCallback(error, result) {
-      if (result !== null) {
-        this.$store.commit("setUserId", result.data.PlayFabId);
-        this.$store.commit("setSessionId", result.data.SessionTicket);
-        this.$router.push({ path: "/" });
-      } else if (error !== null) {
-        this.message = error.errorMessage;
+    async submit() {
+      try {
+        const response = await axios.get("/api/login");
+        console.log(response.data);
+        if (response !== null) {
+          this.$store.commit("setUserId", response.data.PlayFabId);
+          this.$store.commit("setSessionId", response.data.SessionTicket);
+          this.$router.push({ path: "/" });
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
   }

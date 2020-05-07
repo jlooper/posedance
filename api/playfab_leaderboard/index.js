@@ -10,7 +10,7 @@ module.exports = function (context) {
 		ProfileConstraints: {
 			ShowDisplayName: true,
 			ShowLinkedAccounts: true,
-			ShowContactEmailAddresses: true,
+			ShowContactEmailAddresses: false,
 		},
 		MaxResultsCount: 100,
 		StartPosition: 0,

@@ -21,19 +21,15 @@ export default {
       leaderboard: []
     };
   },
-
   async created() {
-    await axios
-      .get("/api/playfab_leaderboard")
-      .then(function(response) {
-        // handle success
-        this.leaderboard = response.data;
-        console.log(this.leaderboard);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
+    try {
+      const response = await axios.get("/api/playfab_leaderboard");
+      console.log(response.data);
+      this.leaderboard = response.data;
+      console.log(this.leaderboard);
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
 </script>

@@ -22,9 +22,18 @@ export default {
     };
   },
 
-  async created() {
-    let res = await axios.get("/api/playfab_leaderboard");
-    this.leaderboard = res;
+  created() {
+    axios
+      .get("/api/playfab_leaderboard")
+      .then(function(response) {
+        // handle success
+        console.log(response);
+        this.leaderboard = response;
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
   }
 };
 </script>

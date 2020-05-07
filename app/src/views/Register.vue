@@ -58,7 +58,7 @@
   </section>
 </template>
 <script>
-import { PlayFabClient } from "playfab-sdk";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -69,21 +69,14 @@ export default {
     };
   },
   methods: {
-    submit() {
-      var loginRequest = {
-        Email: this.email,
-        Password: this.password,
-        Username: this.username,
-        RequireBothUsernameAndEmail: true
-      };
-      PlayFabClient.settings.titleId = "266B3";
-      PlayFabClient.RegisterPlayFabUser(loginRequest, this.LoginCallback);
-    },
-
-    LoginCallback(error, result) {
-      if (result !== null) {
-        this.$router.push({ path: "/" });
-      } else if (error !== null) {
+    async submit() {
+      try {
+        const response = await axios.get("/api/register");
+        console.log(response.data);
+        if (response !== null) {
+          this.$router.push({ path: "/" });
+        }
+      } catch (error) {
         this.message = error.errorMessage;
       }
     }

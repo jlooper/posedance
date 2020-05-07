@@ -23,7 +23,7 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get("/api/playfab_leaderboard");
+      const response = await axios.get("/api/leaderboard");
       this.leaderboard = response.data;
     } catch (error) {
       console.error(error);

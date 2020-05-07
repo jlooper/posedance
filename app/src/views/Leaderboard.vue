@@ -24,9 +24,7 @@ export default {
   async created() {
     try {
       const response = await axios.get("/api/playfab_leaderboard");
-      console.log(response.data);
       this.leaderboard = response.data;
-      console.log(this.leaderboard);
     } catch (error) {
       console.error(error);
     }

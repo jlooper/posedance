@@ -13,33 +13,34 @@
   </section>
 </template>
 <script>
-import { PlayFab, PlayFabServer } from "playfab-sdk";
+//import { PlayFab, PlayFabServer } from "playfab-sdk";
 import axios from "axios";
 
 export default {
   data() {
     return {
-      leaderboard: [],
-      key: ""
+      leaderboard: []
+      //key: ""
     };
   },
 
   methods: {
-    LeaderboardCallback(error, result) {
+    /*LeaderboardCallback(error, result) {
       if (result !== null) {
         this.leaderboard = result.data.Leaderboard;
         console.log(this.leaderboard);
       } else if (error !== null) {
         console.log(error.errorMessage);
       }
-    }
+    }*/
   },
 
   async created() {
-    let res = await axios.get("/api/initTrigger");
-    this.key = res.data;
+    let res = await axios.get("/api/playfab_leaderboard");
+    this.leaderboard = res.body;
+    //this.key = res.data;
 
-    var leaderboardRequest = {
+    /*var leaderboardRequest = {
       ProfileConstraints: {
         ShowDisplayName: true,
         ShowLinkedAccounts: true,
@@ -52,6 +53,7 @@ export default {
     PlayFabServer.settings.titleId = "266B3";
     PlayFab.settings.developerSecretKey = this.key;
     PlayFabServer.GetLeaderboard(leaderboardRequest, this.LeaderboardCallback);
+    */
   }
 };
 </script>

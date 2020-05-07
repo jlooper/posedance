@@ -4,5 +4,8 @@
 		"AzureWebJobsStorage": "",
 		"FUNCTIONS_WORKER_RUNTIME": "node",
 		"VUE_APP_PLAYFAB_SECRET_KEY": "7HFX1NSO3NX3NDP1XXYXJ9QOOQY9UFGQH43885BOPUQEBUMPZY"
+	},
+	"Host": {
+		"CORS": "http://localhost:8080"
 	}
 }

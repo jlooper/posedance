@@ -61,7 +61,7 @@
 <script>
 import * as posenet from '@tensorflow-models/posenet';
 import { mapState } from 'vuex';
-import { PlayFabClient } from 'playfab-sdk';
+import axios from 'axios';
 
 const VIDEO_WIDTH = 400;
 const VIDEO_HEIGHT = 600;
@@ -180,26 +180,21 @@ export default {
 		},
 		postScore(score) {
 			if (this.sessionId != null) {
-				let request = {
-					Statistics: [
-						{
-							StatisticName: 'score',
-							Value: parseInt(score),
-						},
-					],
-					headers: {
-						'X-authentication': this.sessionId,
-					},
-				};
-				PlayFabClient.settings.titleId = '266B3';
-				PlayFabClient.UpdatePlayerStatistics(request, this.callback);
-			} else {
-				this.message = 'Please login to see your scores on the leaderboard!';
+				axios
+					.post('/api/score', {
+						sessionId: this.sessionId,
+						score: parseInt(score),
+					})
+					.then(function(response) {
+						console.log(response);
+					})
+					.catch(function(error) {
+						console.log(error);
+						this.message = 'Please login to see your scores on the leaderboard!';
+					});
 			}
 		},
-		callback(error, result) {
-			console.log(error, result);
-		},
+
 		setUpCanvases() {
 			this.canvas = this.$refs.output;
 			this.canvas2 = this.$refs.output2;

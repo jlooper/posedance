@@ -28,7 +28,7 @@ export default {
       .then(function(response) {
         // handle success
         console.log(response);
-        this.leaderboard = response;
+        this.leaderboard = response.data;
       })
       .catch(function(error) {
         // handle error

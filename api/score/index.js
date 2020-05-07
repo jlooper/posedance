@@ -5,11 +5,11 @@ module.exports = function (context, req) {
 		Statistics: [
 			{
 				StatisticName: 'score',
-				Value: req.score,
+				Value: req.query.score,
 			},
 		],
 		headers: {
-			'X-authentication': req.sessionId,
+			'X-authentication': req.query.sessionId,
 		},
 	};
 	PlayFabClient.settings.titleId = '266B3';

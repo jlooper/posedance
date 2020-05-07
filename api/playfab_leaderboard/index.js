@@ -4,8 +4,8 @@ function getKey() {
 	return process.env['VUE_APP_PLAYFAB_SECRET_KEY'];
 }
 
-module.exports = async function (context) {
-	let playfab_key = await getKey();
+module.exports = function (context) {
+	let playfab_key = getKey();
 	var leaderboardRequest = {
 		ProfileConstraints: {
 			ShowDisplayName: true,
@@ -18,8 +18,9 @@ module.exports = async function (context) {
 	};
 	PlayFabServer.settings.titleId = '266B3';
 	PlayFab.settings.developerSecretKey = playfab_key;
-	await PlayFabServer.GetLeaderboard(leaderboardRequest, function (error, result) {
-		console.log(result);
+	PlayFabServer.GetLeaderboard(leaderboardRequest, function (error, result) {
+		console.log(JSON.stringify(result.data.Leaderboard));
 		context.res = { body: result.data.Leaderboard };
+		context.done();
 	});
 };

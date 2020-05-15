@@ -94,21 +94,36 @@
           <div>
             <blockquote
               class="tiktok-embed"
-              cite="https://www.tiktok.com/@charlidamelio/video/6814512279690808581"
-              data-video-id="6814512279690808581"
+              cite="https://www.tiktok.com/@trefess/video/6816501430208269574"
+              data-video-id="6816501430208269574"
+              style="max-width: 605px;min-width: 325px;"
             >
               <section>
+                <a target="_blank" title="@trefess" href="https://www.tiktok.com/@trefess">@trefess</a>
+                <p>
+                  Y’all don’t know how hard it is for me to try dances on tik tok so here’s to something I can do 👊🏽♿️💪🏽
+                  <a
+                    title="disabled"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/disabled"
+                  >##disabled</a>
+                  <a
+                    title="wheelchairdancing"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/wheelchairdancing"
+                  >##wheelchairdancing</a>
+                  <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp">##fyp</a>
+                  <a
+                    title="firsttry"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/firsttry"
+                  >##firsttry</a>
+                </p>
                 <a
                   target="_blank"
-                  title="@charlidamelio"
-                  href="https://www.tiktok.com/@charlidamelio"
-                >@charlidamelio</a>
-                <p></p>
-                <a
-                  target="_blank"
-                  title="♬ A m e r i c a n B o y - favsoundds"
-                  href="https://www.tiktok.com/music/A-m-e-r-i-c-a-n-B-o-y-6745354664230914821"
-                >♬ A m e r i c a n B o y - favsoundds</a>
+                  title="♬ Laxed (Siren Beat) - Jawsh 685"
+                  href="https://www.tiktok.com/music/Laxed-Siren-Beat-6815670535616350982"
+                >♬ Laxed (Siren Beat) - Jawsh 685</a>
               </section>
             </blockquote>
           </div>
@@ -185,21 +200,51 @@
           <div>
             <blockquote
               class="tiktok-embed"
-              cite="https://www.tiktok.com/@addisonre/video/6810848073737096454"
-              data-video-id="6810848073737096454"
+              cite="https://www.tiktok.com/@seward_cole/video/6824549344620940549"
+              data-video-id="6824549344620940549"
+              style="max-width: 605px;min-width: 325px;"
             >
               <section>
                 <a
                   target="_blank"
-                  title="@addisonre"
-                  href="https://www.tiktok.com/@addisonre"
-                >@addisonre</a>
-                <p>drafty draft bc hey @sherinicolee makeup by @patricktabeauty ❤️</p>
+                  title="@seward_cole"
+                  href="https://www.tiktok.com/@seward_cole"
+                >@seward_cole</a>
+                <p>
+                  <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp">##fyp</a>
+                  <a
+                    title="foryoupage"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/foryoupage"
+                  >##foryoupage</a>
+                  <a
+                    title="dancechallenge"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/dancechallenge"
+                  >##dancechallenge</a>
+                  <a title="gay" target="_blank" href="https://www.tiktok.com/tag/gay">##gay</a>
+                  <a
+                    title="gayswithtattoos"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/gayswithtattoos"
+                  >##gayswithtattoos</a>
+                  <a
+                    title="littlewomenla"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/littlewomenla"
+                  >##littlewomenla</a>
+                  <a
+                    title="coleseward"
+                    target="_blank"
+                    href="https://www.tiktok.com/tag/coleseward"
+                  >##coleseward</a>
+                  <a title="lwla" target="_blank" href="https://www.tiktok.com/tag/lwla">##lwla</a>
+                </p>
                 <a
                   target="_blank"
-                  title="♬ Captain Hook - Megan Thee Stallion"
-                  href="https://www.tiktok.com/music/Captain-Hook-6800996737679886337"
-                >♬ Captain Hook - Megan Thee Stallion</a>
+                  title="♬ Laxed (Siren Beat) - Jawsh 685"
+                  href="https://www.tiktok.com/music/Laxed-Siren-Beat-6815670535616350982"
+                >♬ Laxed (Siren Beat) - Jawsh 685</a>
               </section>
             </blockquote>
           </div>

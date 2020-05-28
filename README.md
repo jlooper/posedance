@@ -1,6 +1,10 @@
 # PoseDance - Your TikTok Trainer!
 
-Use PoseNet to train your dancing!
+Use PoseNet to train your dancing! 
+
+## Slides!
+
+[download](posedance.pptx)
 
 ## Project setup
 ```

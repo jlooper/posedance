@@ -1,4 +1,4 @@
-# PoseDance - Your TikTok Trainer!
+# PoseDance - Perfect your Dance Moves with a friendly TikTok Trainer!
 
 Use PoseNet to train your dancing! 
 

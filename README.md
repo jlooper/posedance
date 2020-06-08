@@ -2,6 +2,10 @@
 
 Use PoseNet to train your dancing!
 
+## Try the app!
+
+You can try the app live [here](https://aka.ms/posedance).
+
 ## Blogpost
 
 Blogpost coming soon!
@@ -12,11 +16,11 @@ Watch a [video explanation](https://www.dropbox.com/s/ccog8uz0tzk10mv/posedance.
 
 ## Slides
 
-Download a PowerPoint presentation on this project [here](posedance.pptx)
+Download a PowerPoint presentation on this project [here](posedance.pptx).
 
 ## Behind the Scenes
 
-Learn more about PoseNet [here](https://github.com/tensorflow/tfjs-models/tree/master/posenet/demos)
+Learn more about PoseNet [here](https://github.com/tensorflow/tfjs-models/tree/master/posenet/demos).
 
 ---
 

@@ -40,13 +40,16 @@ Learn more about PoseNet [here](https://github.com/tensorflow/tfjs-models/tree/m
 
 ## FAQ:
 
-Where can I learn more about TensorFlow.js?
+**Where can I learn more about TensorFlow.js?**
+
 Check out their [docs](https://www.tensorflow.org/js/) and try some [tutorials](https://www.tensorflow.org/js/tutorials) and [CodeLabs](). Its [roadmap](https://blog.tensorflow.org/2020/04/upcoming-changes-to-tensorflowjs.html) is interesting as well. Good [blogposts](https://blog.tensorflow.org/search?label=TensorFlow.js&max-results=20) are available as well.
 
-Does TensorFlow.js support GPU?
+**Does TensorFlow.js support GPU?**
+
 There's a TFJS webgpu backend library you can try [here](https://github.com/tensorflow/tfjs/tree/master/tfjs-backend-webgpu).
 
-What about WASM?
+**What about WASM?**
+
 There's a new TFJS WASM backend [as well](https://blog.tensorflow.org/2020/03/introducing-webassembly-backend-for-tensorflow-js.html)!
 
 ---

@@ -1,6 +1,20 @@
 # PoseDance - Perfect your Dance Moves with a friendly TikTok Trainer!
 
-Use PoseNet to train your dancing!
+## Welcome to PoseDance!
+
+![screenshot](screenshot.png)
+
+PoseDance is your friendly TikTok trainer. It uses embedded videos downloaded from TikTok with PoseNet running on top, enabling the drawing of a 'skeleton' as each frame of a video is analyzed. Match your webcam's output to the video and get a high score!
+
+This project is built using Vue.js with PoseNet installed as an npm package. This allows use of the TensorFlow-built models to be used via TensorFlow.js in the web app. It also makes the app PRETTY BIG, especially as you need to analyze two models, one for the video from TikTok, and one for your webcam.
+
+For its backend it also uses [PlayFab](https://playfab.com), a great PAAS for games. Register and login to record your high score!
+
+It's hosted on [Azure Static Web Sites](https://aka.ms/trystaticwebapps), a nice way to host your static web apps and SPAS like this one.
+
+> You can read more about how to build and host Azure Static Sites on the Microsoft [Docs](https://docs.microsoft.com/azure/static-web-apps/overview?WT.mc_id=2020talks-github-jelooper). You can also walk through how to publish your static sites to Azure on Microsoft [Learn](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api?WT.mc_id=2020talks-github-jelooper)
+
+---
 
 ## Try the app!
 
@@ -24,13 +38,16 @@ Learn more about PoseNet [here](https://github.com/tensorflow/tfjs-models/tree/m
 
 ---
 
-![screenshot](screenshot.png)
+## FAQ:
 
-This project is built using Vue.js with PoseNet installed as an npm package. This allows use of the TensorFlow-built models to be used via TensorFlow.js in the web app. It also makes the app PRETTY BIG, especially as you need to analyze two models, one for the video from TikTok, and one for your webcam.
+Where can I learn more about TensorFlow.js?
+Check out their [docs](https://www.tensorflow.org/js/) and try some [tutorials](https://www.tensorflow.org/js/tutorials) and [CodeLabs](). Its [roadmap](https://blog.tensorflow.org/2020/04/upcoming-changes-to-tensorflowjs.html) is interesting as well. Good [blogposts](https://blog.tensorflow.org/search?label=TensorFlow.js&max-results=20) are available as well.
 
-For its backend it also uses [PlayFab](https://playfab.com), a great PAAS for games. Register and login to record your high score!
+Does TensorFlow.js support GPU?
+There's a TFJS webgpu backend library you can try [here](https://github.com/tensorflow/tfjs/tree/master/tfjs-backend-webgpu).
 
-It's hosted on [Azure Static Web Sites](https://aka.ms/trystaticwebapps), a nice way to host your static web apps and SPAS like this one.
+What about WASM?
+There's a new TFJS WASM backend [as well](https://blog.tensorflow.org/2020/03/introducing-webassembly-backend-for-tensorflow-js.html)!
 
 ---
 

@@ -1,0 +1,150 @@
+{
+  "title": "PoseDance Tour",
+  "steps": [
+    {
+      "file": "app/package.json",
+      "line": 14,
+      "description": "We start here with adding the TensorFlow dependency; we need TensorFlow.js to allow PoseNet to work in a browser, and we need to add PoseNet itself as one of TensorFlow's pretrained models."
+    },
+    {
+      "file": "app/package.json",
+      "line": 21,
+      "description": "Make sure that you include Vue, the Vue Router, Vuelidate for validating your forms, Vuex, and Vuex-PersistedState for state management, as this is a Vue app including forms and login credentials."
+    },
+    {
+      "file": "app/public/routes.json",
+      "line": 1,
+      "description": "This file is important to add to a SPA (Single-Page App) like this one so that Azure Static Web Apps will handle routes properly."
+    },
+    {
+      "file": "app/src/router.js",
+      "line": 14,
+      "description": "This app has five routes: home, the dance that you're watching once you click its card from the homepage, a login and register screen, and a leaderboard."
+    },
+    {
+      "file": "app/src/views/SelectVideo.vue",
+      "line": 13,
+      "description": "Here's the homepage, where we display the embeds for the TikTok videos we want to show. You can't use PoseNet to draw 'skeletons' on these embeds, as you need to have raw video .mp4s available (and you can download those from TikTok's mobile app) and embed them in a canvas so you can draw the skeleton on top. So we do that in /Dance.vue. "
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 138,
+      "description": "This is the calculateScore method, where we compare the arrays captured by the webcam's X and Y coordinate readings and compare them, then sum them and divide the result by the length of the array. This is probably not the best math or the best way to do this but it will give you some comparison of your body motions compared to the source of truth which is the TikTok video. You can get better scores by ensuring that your body is placed in the frame similarly to the way TikTok is set up, as the x and y coordinates will match better. "
+    },
+    {
+      "file": "api/score/index.js",
+      "line": 15,
+      "description": "In this folder are kept all the functions in the place where Azure Static Web Apps can find them. In this example we're sending a score to PlayFab based on a sessionId."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 1,
+      "description": "Wow, this is a long file! Let's walk through it. As you notice, the actual HTML markup is minimal; we just have a progress bar that watches for the 'ready' boolean to be set, which happens once all the parts are loaded. If the person isn't logged in, their score can't be saved, so we also add a message for capture that. Then, we add a video for TikTok and its canvas placeholder and a video placeholder and canvas for the webcam outuput. Finally, there's a space to display your score, and two buttons, 'preview' and 'play'. Preview will just show the video and not capture a score (after playtesting, we felt this necessary!)"
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 71,
+      "description": "This is a computed property that informs the UI that the videos and models are loaded and thus to stop the progress bar and enable the play button."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 80,
+      "description": "The many elements of this data object include all the video and canvas references and scoring helpers such as arrays to capture webcamKeypoints and videoKeypoints, tallies, and scores."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 107,
+      "description": "This simple created() lifecycle hook determines which video to display according to the chosen route."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 109,
+      "description": "Most of the action in this app is kicked off in this mounted lifecycle hook. "
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 111,
+      "description": "Create a reference to the TikTok video"
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 121,
+      "description": "When the TikTok video is playing, for each frame, run the detectPoseRealTime routine"
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 113,
+      "description": "When the TikTok video ends, notify the DOM that it has ended and cancel all animation, and if the app is not in preview state, calculate the score."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 127,
+      "description": "Here we set up the second video placeholder for the webcam and set up its canvases"
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 129,
+      "description": "Make sure to load up your models asyncronously!"
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 132,
+      "description": "...and asyncronously set up the webcam, handling situations where it doesn't exist in various browsers."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 199,
+      "description": "Set up your canvases so that you can draw on them using the Canvas API. "
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 210,
+      "description": "Load your models asyncronously, as they are big and you need two of them, one for the TikTok video inference, the other for the webcam. "
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 227,
+      "description": "Here's where you set up the webcam and make sure it's facing the user and flipped so as to not reverse the image by default."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 260,
+      "description": "Start detecting your poses in realtime, asyncronously.",
+      "selection": {
+        "start": {
+          "line": 260,
+          "character": 1
+        },
+        "end": {
+          "line": 261,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 276,
+      "description": "For each frame, have the PoseNet model determine both the poses in the TikTok video and the poses in the webcam. Set it to a single-person decoding model. Then, for each pose, draw dots for the keypoints and lines to connect them and form a skeleton using the Canvas API."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 299,
+      "description": "Do the same process for your webcam."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 318,
+      "description": "requestAnimationFrame is called to infer poses from the video frames."
+    },
+    {
+      "file": "app/src/views/Dance.vue",
+      "line": 321,
+      "description": "drawPoint, drawPoint2, drawSegment, drawSegment2, and other connected methods are all used to draw dots and lines on the canvas. These methods are all called by drawKeypoints and drawSkeleton methods."
+    },
+    {
+      "file": "api/package.json",
+      "line": 6,
+      "description": "The API folder contains calls to PlayFab, the PAAS that keeps scores for your game."
+    }
+  ]
+}

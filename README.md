@@ -16,6 +16,10 @@ It's hosted on [Azure Static Web Sites](https://aka.ms/trystaticwebapps), a nice
 
 ---
 
+## Learn about the codebase
+
+This repo has a Code Tour! What's a Code Tour, you ask? It's a neat little [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour#recording-tours) that, if installed locally, will allow you to view the code tour that I created to step through the code. Install that extension in VS Code and give it a try!
+
 ## Try the app!
 
 You can try the app live [here](https://aka.ms/posedance).

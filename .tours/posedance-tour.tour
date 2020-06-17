@@ -34,7 +34,7 @@
     {
       "file": "api/score/index.js",
       "line": 15,
-      "description": "In this folder are kept all the functions in the place where Azure Static Web Apps can find them. In this example we're sending a score to PlayFab based on a sessionId."
+      "description": "In this folder are kept all the functions in the place where [Azure Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/?WT.mc_id=docs-github-jelooper) can find them. In this example we're sending a score to PlayFab based on a sessionId."
     },
     {
       "file": "app/src/views/Dance.vue",

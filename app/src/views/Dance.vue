@@ -171,6 +171,7 @@ export default {
         }
       }
       let s = sum / xs.length + sum2 / ys.length;
+      this.score = (Math.min(1000 / -s, 1000)).toFixed(2);
       this.score = s.toFixed(2);
       if (!isNaN(this.score)) {
         this.postScore(this.score);

@@ -12,16 +12,20 @@
 	},
 	"dependencies": {
 		"@tensorflow-models/posenet": "^2.2.1",
-		"@tensorflow/tfjs": "^1.7.0",
+		"@tensorflow/tfjs": "^2.7.0",
+		"@tensorflow/tfjs-converter": "^2.7.0",
+		"@tensorflow/tfjs-core": "^2.7.0",
+		"@tensorflow/tfjs-backend-cpu": "^2.7.0",
+		"@tensorflow/tfjs-backend-webgl": "^2.7.0",
 		"axios": "^0.19.2",
 		"bulma": "^0.8.2",
-		"core-js": "^3.6.4",
-		"sass": "^1.26.5",
+		"core-js": "^3.8.0",
+		"sass": "^1.29.0",
 		"sass-loader": "^8.0.2",
-		"vue": "^2.6.11",
-		"vue-router": "^3.1.6",
-		"vuelidate": "^0.7.4",
-		"vuex": "^3.0.1",
+		"vue": "^2.6.12",
+		"vue-router": "^3.4.9",
+		"vuelidate": "^0.7.6",
+		"vuex": "^3.6.0",
 		"vuex-persistedstate": "^2.7.0"
 	},
 	"devDependencies": {
@@ -31,8 +35,8 @@
 		"babel-eslint": "^10.0.3",
 		"eslint": "^6.7.2",
 		"eslint-plugin-vue": "^6.1.2",
-		"node-sass": "^4.13.1",
-		"vue-template-compiler": "^2.6.11"
+		"node-sass": "^4.14.1",
+		"vue-template-compiler": "^2.6.12"
 	},
 	"eslintConfig": {
 		"root": true,

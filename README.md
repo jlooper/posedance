@@ -12,7 +12,7 @@ For its backend it also uses [PlayFab](https://playfab.com), a great PAAS for ga
 
 It's hosted on [Azure Static Web Sites](https://aka.ms/trystaticwebapps), a nice way to host your static web apps and SPAS like this one.
 
-> You can read more about how to build and host Azure Static Sites on the Microsoft [Docs](https://docs.microsoft.com/azure/static-web-apps/overview?WT.mc_id=2020talks-github-jelooper). You can also walk through how to publish your static sites to Azure on Microsoft [Learn](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api?WT.mc_id=2020talks-github-jelooper).
+> You can read more about how to build and host Azure Static Sites on the Microsoft [Docs](https://docs.microsoft.com/azure/static-web-apps/overview?WT.mc_id=academic-5207-jelooper). You can also walk through how to publish your static sites to Azure on Microsoft [Learn](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api?WT.mc_id=academic-5207-jelooper).
 
 ---
 

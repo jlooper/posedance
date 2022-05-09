@@ -18,7 +18,7 @@ It's hosted on [Azure Static Web Sites](https://aka.ms/trystaticwebapps), a nice
 
 ## Learn about the codebase
 
-This repo has a Code Tour! What's a Code Tour, you ask? It's a neat little [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour#recording-tours) that, if installed locally, will allow you to view the code tour that I created to step through the code. Install that extension in VS Code and give it a try!
+This repo has a Code Tour! What's a Code Tour, you ask? It's a neat little [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour#recording-tours) that, if installed locally, will allow you to view the code tour that I created to step through the code. Install that extension in VS Code and give it a try! Dance with us here: https://wonderful-ocean-007be220f.1.azurestaticapps.net/
 
 ## Video
 
@@ -53,7 +53,7 @@ There's a new TFJS WASM backend [as well](https://blog.tensorflow.org/2020/03/in
 ## Project setup
 
 ```
-npm install
+cd app && npm install
 ```
 
 ### Compiles and hot-reloads for development
